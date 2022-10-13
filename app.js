@@ -1,10 +1,10 @@
+if (process.env.NODE_ENV === 'development') require('dotenv').config()
+
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-const router = require('./router')
-
-// app
 const app = express()
+const router = require('./router')
 
 // middleware
 app.use(express.urlencoded({ extended: false }))
@@ -12,7 +12,8 @@ app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors())
 
-// router
-app.use(router)
+app.use('/', router)
 
-module.exports = app
+app.listen(3000, () => {
+  console.log('listening to port 3000')
+})

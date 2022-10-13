@@ -1,7 +1,10 @@
-const router = require('express').Router()
+const route = require('express').Router()
+const UserController = require('../controllers/userController')
 
-router.get('/', (_, res) => {
-  res.send('Ini routing user')
-})
+route.post('/', UserController.insertUser)
 
-module.exports = router
+// route.get('/', (req,res) => {
+//   res.send('mantap')
+// })
+
+module.exports = route
